@@ -18,4 +18,13 @@ export class PersonService {
         return Observable.throw(error);
     }
 
+    addPerson(person: Person){
+      let body = JSON.stringify(person);
+      let headers= new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+
+      return this._httpService.post('http://localhost:8080/create', body, options);
+
+    }
+
 }

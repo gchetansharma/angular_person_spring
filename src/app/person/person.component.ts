@@ -9,6 +9,7 @@ import { PersonService } from './person.service';
 })
 export class PersonComponent implements OnInit {
     persons: Person[];
+    person = new Person() ;
     constructor(private _personService: PersonService) {}
 
     ngOnInit(): void {
@@ -22,6 +23,13 @@ export class PersonComponent implements OnInit {
             }, (error) => {
                 console.log(error);
             });
+    }
+
+    addPerson(): void {
+      this._personService.addPerson(this.person)
+          .subscribe((respnse) => {console.log(respnse)}, (error) => {
+            console.log(error);
+          });
     }
 
 }
